@@ -34,14 +34,18 @@ Using the results from Task 2, identify items that have reached their reserve pr
 
 # Declare variables
 
+
+
+itemList = [] #Task1 variable
+itemNumbers = [] #Task1 variable
+itemDescriptions = [] #Task1 variable
+reservePrices = [] #Task1 variable
+numberOfBids = [] #Task1 variable
+numberOfItems = int(input("How many items are there in the auction?")) #Task1 variable
+biddingLoopRun = True
+
 #TASK 1#########################################################
 
-itemList = []
-itemNumbers = []
-itemDescriptions = []
-reservePrices = []
-numberOfBids = []
-numberOfItems = int(input("How many items are there in the auction?"))
 #populate itemList with an item list
 print("\nWe will now enter product details\n")
 for i in range(numberOfItems):
@@ -55,6 +59,29 @@ for i in range(numberOfItems):
     reservePrices.append(reservePrice)
     numberOfBids.append(0)
 
-for i in range(len(itemList)):
-    print(itemList[i] + " " + str(itemNumbers[i]) + " " + itemDescriptions[i] + " " + reservePrices[i] + " " + str(numberOfBids[i]))
+def printInventory():
+    for i in range(len(itemList)):
+        print(itemList[i] + " " + str(itemNumbers[i]) + " " + itemDescriptions[i] + " " + str( "% 12.2f" % reservePrices[i]) + " " + str(numberOfBids[i]))
 
+printInventory()
+#TASK 2 ##########################################################################################
+#To subscribe as a buyer, you will need to be allocated a buyer code
+#This will be used to record your bid against an item
+
+print("Welcome to Mr Welham's Auction House\n")
+choice = input("Are you registered as a bidder? (y/n)")
+if choice =="no" or choice=="No" or choice=="n" or choice=="N" or choice =="NO":
+    while biddingLoopRun:
+        bidderChoice = input("Would you like to register? (y/n)")
+        if bidderChoice =="no" or bidderChoice =="No" or bidderChoice =="n" or bidderChoice=="N" or bidderChoice =="NO":
+            inventoryChoice = input("Would you like to view the auction inventory? (y/n)")
+            if inventoryChoice =="yes" or inventoryChoice=="Yes" or inventoryChoice=="y" or inventoryChoice=="Y" or inventoryChoice =="YES":                
+                printInventory()
+            
+            else:
+                print("\nThank you for visiting the auction house today, goodbye")
+                biddingLoopRun = False
+
+# To view an item, the buyer can view the whole inventory (i) search by item number (s) or by description (d)
+
+#option = input("\n Which item would you like to bid on?\nTo view auction inventory enter(i)")
